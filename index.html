@@ -29,41 +29,35 @@
             background-color: #F1F8E9;
         }
 
-        /* Loading Screen */
-        .loading-screen {
+        /* Language Switcher */
+        .language-switcher {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            top: 80px;
+            right: 20px;
+            z-index: 1004;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out;
+            overflow: hidden;
         }
 
-        .loading-screen.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 14px;
         }
 
-        .bee-loader {
-            width: 100px;
-            height: 100px;
-            position: relative;
-            animation: float 2s ease-in-out infinite;
+        .lang-btn.active {
+            background: var(--primary-color);
+            color: white;
         }
 
-        .bee-loader::before {
-            content: '🐝';
-            font-size: 60px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+        /* Loading Screen */
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
@@ -1099,6 +1093,27 @@
             transform: translateX(0);
         }
 
+        /* WhatsApp Button Styling */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: scale(1.05);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -1138,6 +1153,11 @@
             .gallery-large-grid,
             .achievements-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .language-switcher {
+                top: 70px;
+                right: 10px;
             }
         }
 
@@ -1208,6 +1228,12 @@
         <div class="bee-loader"></div>
     </div>
 
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" id="enBtn" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" id="hiBtn" onclick="switchLanguage('hi')">HI</button>
+    </div>
+
     <!-- Scroll Indicator -->
     <div class="scroll-indicator">
         <div class="scroll-progress" id="scrollProgress"></div>
@@ -1219,18 +1245,18 @@
             <div class="logo">
                 <img src="./img/logo.png" alt="DMP logo">
                 <i class="fas fa-honey-pot"></i>
-                Dhanlaxmi Madhumakkhi Palan
+                <span data-en="Dhanlaxmi Madhumakkhi Palan" data-hi="धनलक्ष्मी मधुमक्खी पालन">Dhanlaxmi Madhumakkhi Palan</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#training">Training</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#home"><span data-en="Home" data-hi="होम">Home</span></a></li>
+                <li><a href="#about"><span data-en="About" data-hi="हमारे बारे में">About</span></a></li>
+                <li><a href="#services"><span data-en="Services" data-hi="सेवाएं">Services</span></a></li>
+                <li><a href="#products"><span data-en="Products" data-hi="उत्पाद">Products</span></a></li>
+                <li><a href="#training"><span data-en="Training" data-hi="प्रशिक्षण">Training</span></a></li>
+                <li><a href="#gallery"><span data-en="Gallery" data-hi="गैलरी">Gallery</span></a></li>
+                <li><a href="#achievements"><span data-en="Achievements" data-hi="उपलब्धियां">Achievements</span></a></li>
+                <li><a href="#contact"><span data-en="Contact" data-hi="संपर्क">Contact</span></a></li>
+                <li><a href="#faq"><span data-en="FAQ" data-hi="सामान्य प्रश्न">FAQ</span></a></li>
             </ul>
             <div class="mobile-menu" id="mobileMenu">
                 <i class="fas fa-bars"></i>
@@ -1244,15 +1270,15 @@
             <i class="fas fa-times"></i>
         </div>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#training">Training</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#home"><span data-en="Home" data-hi="होम">Home</span></a></li>
+            <li><a href="#about"><span data-en="About" data-hi="हमारे बारे में">About</span></a></li>
+            <li><a href="#services"><span data-en="Services" data-hi="सेवाएं">Services</span></a></li>
+            <li><a href="#products"><span data-en="Products" data-hi="उत्पाद">Products</span></a></li>
+            <li><a href="#training"><span data-en="Training" data-hi="प्रशिक्षण">Training</span></a></li>
+            <li><a href="#gallery"><span data-en="Gallery" data-hi="गैलरी">Gallery</span></a></li>
+            <li><a href="#achievements"><span data-en="Achievements" data-hi="उपलब्धियां">Achievements</span></a></li>
+            <li><a href="#contact"><span data-en="Contact" data-hi="संपर्क">Contact</span></a></li>
+            <li><a href="#faq"><span data-en="FAQ" data-hi="सामान्य प्रश्न">FAQ</span></a></li>
         </ul>
     </div>
 
@@ -1264,19 +1290,19 @@
         <div class="floating-bee" style="top: 40%; animation-delay: 10s;">🐝</div>
         
         <div class="hero-content">
-            <h1>Apiculture & Beekeeping</h1>
-            <p>Farmer choice · Eco-Friendly · Natural</p>
-            <p>Warora Chandrapur Nagpur</p>
+            <h1 data-en="Apiculture & Beekeeping" data-hi="मधुमक्खी पालन">Apiculture & Beekeeping</h1>
+            <p data-en="Farmer choice · Eco-Friendly · Natural" data-hi="किसान की पसंद · पर्यावरण के अनुकूल · प्राकृतिक">Farmer choice · Eco-Friendly · Natural</p>
+            <p data-en="Warora Chandrapur Nagpur" data-hi="वरोरा चंद्रपुर नागपुर">Warora Chandrapur Nagpur</p>
             <div class="cta-buttons">
-                <a href="#training" class="cta-button">Join Training</a>
-                <a href="#contact" class="cta-button secondary">Ask a Question</a>
+                <a href="#training" class="cta-button"><span data-en="Join Training" data-hi="प्रशिक्षण में शामिल हों">Join Training</span></a>
+                <a href="#contact" class="cta-button secondary"><span data-en="Ask a Question" data-hi="प्रश्न पूछें">Ask a Question</span></a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about section" id="about">
-        <h2 class="section-title">About Our Beekeeping</h2>
+        <h2 class="section-title" data-en="About Our Beekeeping" data-hi="हमारे मधुमक्खी पालन के बारे में">About Our Beekeeping</h2>
         <div class="about-container">
             <div class="slideshow-container">
                 <div class="slide fade">
@@ -1305,25 +1331,30 @@
             </div>
             
             <div class="about-content">
-                <p>We are providing training, high-quality  natural honey, and value-added bee products and bee colony.</p>
+                <p data-en="We are providing training, high-quality natural honey, and value-added bee products and bee colony." 
+                   data-hi="हम प्रशिक्षण, उच्च गुणवत्ता वाली प्राकृतिक शहद, और मूल्यवर्धित मधुमक्खी उत्पाद और मधुमक्खी उपनिवेश प्रदान कर रहे हैं।">
+                   We are providing training, high-quality natural honey, and value-added bee products and bee colony.</p>
                 
                 <div class="highlights">
                     <div class="highlight-item">
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Ethically managed colonies</strong> with seasonal migration for nectar flows.
+                            <strong data-en="Ethically managed colonies" data-hi="नैतिक रूप से प्रबंधित उपनिवेश">Ethically managed colonies</strong>
+                            <span data-en=" with seasonal migration for nectar flows." data-hi=" नेक्टर प्रवाह के लिए मौसमी प्रवासन के साथ।"> with seasonal migration for nectar flows.</span>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>On-site processing</strong> to ensure quality and traceability.
+                            <strong data-en="On-site processing" data-hi="स्थान पर प्रसंस्करण">On-site processing</strong>
+                            <span data-en=" to ensure quality and traceability." data-hi=" गुणवत्ता और ट्रेसबिलिटी सुनिश्चित करने के लिए।"> to ensure quality and traceability.</span>
                         </div>
                     </div>
                     <div class="highlight-item">
                         <i class="fas fa-check-circle"></i>
                         <div>
-                            <strong>Training programs</strong> for farmers, students, and entrepreneurs.
+                            <strong data-en="Training programs" data-hi="प्रशिक्षण कार्यक्रम">Training programs</strong>
+                            <span data-en=" for farmers, students, and entrepreneurs." data-hi=" किसानों, छात्रों और उद्यमियों के लिए।"> for farmers, students, and entrepreneurs.</span>
                         </div>
                     </div>
                 </div>
@@ -1333,15 +1364,17 @@
 
     <!-- Services Section -->
     <section class="services section" id="services">
-        <h2 class="section-title">Our Services</h2>
+        <h2 class="section-title" data-en="Our Services" data-hi="हमारी सेवाएं">Our Services</h2>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">
                     <i class="fas fa-warehouse"></i>
                 </div>
                 <div class="service-info">
-                    <h3 class="service-name">Commercial Beekeeping Setup</h3>
-                    <p class="service-description">Full setup: hives, frames, protective gear, and starter colonies tailored for your region.</p>
+                    <h3 class="service-name" data-en="Commercial Beekeeping Setup" data-hi="व्यावसायिक मधुमक्खी पालन सेटअप">Commercial Beekeeping Setup</h3>
+                    <p class="service-description" data-en="Full setup: hives, frames, protective gear, and starter colonies tailored for your region." 
+                       data-hi="पूर्ण सेटअप: छत्ते, फ्रेम, सुरक्षात्मक गियर, और आपके क्षेत्र के लिए तैयार स्टार्टर उपनिवेश।">
+                       Full setup: hives, frames, protective gear, and starter colonies tailored for your region.</p>
                 </div>
             </div>
 
@@ -1350,8 +1383,10 @@
                     <i class="fas fa-seedling"></i>
                 </div>
                 <div class="service-info">
-                    <h3 class="service-name">Pollination Services</h3>
-                    <p class="service-description">Short- and long-term pollination contracts for orchards, fields, and greenhouses.</p>
+                    <h3 class="service-name" data-en="Pollination Services" data-hi="परागण सेवाएं">Pollination Services</h3>
+                    <p class="service-description" data-en="Short- and long-term pollination contracts for orchards, fields, and greenhouses." 
+                       data-hi="बागानों, खेतों और ग्रीनहाउस के लिए अल्पकालिक और दीर्घकालिक परागण अनुबंध।">
+                       Short- and long-term pollination contracts for orchards, fields, and greenhouses.</p>
                 </div>
             </div>
 
@@ -1360,8 +1395,8 @@
                     <i class="fas fa-seedling"></i>
                 </div>
                 <div class="service-info">
-                    <h3 class="service-name">Bee Sting Therapy</h3>
-                    <p class="service-description">Reduce Knee pain.</p>
+                    <h3 class="service-name" data-en="Bee Sting Therapy" data-hi="मधुमक्खी डंक चिकित्सा">Bee Sting Therapy</h3>
+                    <p class="service-description" data-en="Reduce Knee pain." data-hi="घुटने का दर्द कम करें।">Reduce Knee pain.</p>
                 </div>
             </div>
 
@@ -1371,8 +1406,10 @@
                     <i class="fas fa-industry"></i>
                 </div>
                 <div class="service-info">
-                    <h3 class="service-name">Product Processing & Packaging</h3>
-                    <p class="service-description">Honey extraction, filtering, grading, and premium packaging to prepare your brand for market.</p>
+                    <h3 class="service-name" data-en="Product Processing & Packaging" data-hi="उत्पाद प्रसंस्करण और पैकेजिंग">Product Processing & Packaging</h3>
+                    <p class="service-description" data-en="Honey extraction, filtering, grading, and premium packaging to prepare your brand for market." 
+                       data-hi="शहद निष्कर्षण, फिल्टरिंग, ग्रेडिंग, और बाजार के लिए अपने ब्रांड को तैयार करने के लिए प्रीमियम पैकेजिंग।">
+                       Honey extraction, filtering, grading, and premium packaging to prepare your brand for market.</p>
                 </div>
             </div>
         </div>
@@ -1380,18 +1417,21 @@
 
     <!-- Products Section -->
     <section class="products section" id="products">
-        <h2 class="section-title">Our Products</h2>
+        <h2 class="section-title" data-en="Our Products" data-hi="हमारे उत्पाद">Our Products</h2>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-image">
                     <img src="img/honey.png" alt="Raw Honey">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Raw Honey (500g)</h3>
-                    <p class="product-description">Polyfloral, unpasteurized, rich in natural enzymes.</p>
+                    <h3 class="product-name" data-en="Raw Honey (500g)" data-hi="कच्चा शहद (500 ग्राम)">Raw Honey (500g)</h3>
+                    <p class="product-description" data-en="Polyfloral, unpasteurized, rich in natural enzymes." 
+                       data-hi="पॉलीफ्लोरल, अपाश्चरीकृत, प्राकृतिक एंजाइम से भरपूर।">Polyfloral, unpasteurized, rich in natural enzymes.</p>
                     <div class="product-price">
                         <span>₹500</span>
-                        <button class="buy-now" onclick="buyNow('Raw Honey')">Buy Now</button>
+                        <button class="buy-now whatsapp-btn" onclick="buyNow('Raw Honey')">
+                            <i class="fab fa-whatsapp"></i> <span data-en="Buy Now" data-hi="अभी खरीदें">Buy Now</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1401,11 +1441,14 @@
                     <img src="img/beewax.jpg" alt="Beeswax Blocks">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Beeswax Blocks (250g)</h3>
-                    <p class="product-description">Food-grade, uncolored wax for cosmetics, candles, and crafts.</p>
+                    <h3 class="product-name" data-en="Beeswax Blocks (250g)" data-hi="मोम के ब्लॉक (250 ग्राम)">Beeswax Blocks (250g)</h3>
+                    <p class="product-description" data-en="Food-grade, uncolored wax for cosmetics, candles, and crafts." 
+                       data-hi="खाद्य ग्रेड, अरंगीन मोम कॉस्मेटिक्स, मोमबत्ती और शिल्प के लिए।">Food-grade, uncolored wax for cosmetics, candles, and crafts.</p>
                     <div class="product-price">
                         <span>₹XXX</span>
-                        <button class="buy-now" onclick="buyNow('Beeswax Blocks')">Buy Now</button>
+                        <button class="buy-now whatsapp-btn" onclick="buyNow('Beeswax Blocks')">
+                            <i class="fab fa-whatsapp"></i> <span data-en="Buy Now" data-hi="अभी खरीदें">Buy Now</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1415,25 +1458,30 @@
                     <img src="img/royaljelly.jpg" alt="Royal Jelly">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Royal Jelly (30g)</h3>
-                    <p class="product-description">Highly nutritious bee secretion, fresh and refrigerated.</p>
+                    <h3 class="product-name" data-en="Royal Jelly (30g)" data-hi="रॉयल जेली (30 ग्राम)">Royal Jelly (30g)</h3>
+                    <p class="product-description" data-en="Highly nutritious bee secretion, fresh and refrigerated." 
+                       data-hi="अत्यधिक पौष्टिक मधुमक्खी स्राव, ताजा और रेफ्रिजरेटेड।">Highly nutritious bee secretion, fresh and refrigerated.</p>
                     <div class="product-price">
                         <span>₹999</span>
-                        <button class="buy-now" onclick="buyNow('Royal Jelly')">Buy Now</button>
+                        <button class="buy-now whatsapp-btn" onclick="buyNow('Royal Jelly')">
+                            <i class="fab fa-whatsapp"></i> <span data-en="Buy Now" data-hi="अभी खरीदें">Buy Now</span>
+                        </button>
                     </div>
                 </div>
             </div>
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="img/beeboxs.jpg" alt="Propolis Tincture">
+                    <img src="img/beeboxs.jpg" alt="Bee Box">
                 </div>
                 <div class="product-info">
-                    <h3 class="product-name">Bee Box</h3>
+                    <h3 class="product-name" data-en="Bee Box" data-hi="मधुमक्खी बॉक्स">Bee Box</h3>
                     <p class="product-description"></p>
                     <div class="product-price">
                         <span>₹3000</span>
-                        <button class="buy-now" onclick="buyNow('Propolis Tincture')">Buy Now</button>
+                        <button class="buy-now whatsapp-btn" onclick="buyNow('Bee Box')">
+                            <i class="fab fa-whatsapp"></i> <span data-en="Buy Now" data-hi="अभी खरीदें">Buy Now</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1442,95 +1490,108 @@
 
     <!-- Training Section -->
     <section class="training section" id="training">
-        <h2 class="section-title">Training & Workshops</h2>
-        <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px;">Practical, hands-on courses for new and aspiring beekeepers.</p>
+        <h2 class="section-title" data-en="Training & Workshops" data-hi="प्रशिक्षण और कार्यशालाएं">Training & Workshops</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px;" 
+           data-en="Practical, hands-on courses for new and aspiring beekeepers." 
+           data-hi="नए और महत्वाकांक्षी मधुमक्खी पालकों के लिए व्यावहारिक, हाथों से सीखने वाले पाठ्यक्रम।">
+           Practical, hands-on courses for new and aspiring beekeepers.</p>
         
         <div class="training-grid">
             <div class="training-card">
                 <div class="training-header">
-                    <h3 class="training-name">Beginner: 2-day Bootcamp</h3>
-                    <p class="training-duration">Duration: 2 days</p>
+                    <h3 class="training-name" data-en="Beginner: 2-day Bootcamp" data-hi="शुरुआती: 2-दिवसीय बूटकैंप">Beginner: 2-day Bootcamp</h3>
+                    <p class="training-duration" data-en="Duration: 2 days" data-hi="अवधि: 2 दिन">Duration: 2 days</p>
                 </div>
                 <div class="training-body">
-                    <p>Learn the basics of beekeeping, hive management, and honey extraction. Perfect for beginners with no prior experience.</p>
-                    <div class="training-fee">Fee: ₹2,000</div>
-                    <button class="join-training" onclick="joinTraining('Beginner Bootcamp')">Join Training</button>
+                    <p data-en="Learn the basics of beekeeping, hive management, and honey extraction. Perfect for beginners with no prior experience." 
+                       data-hi="मधुमक्खी पालन की मूल बातें, छत्ते का प्रबंधन, और शहद निष्कर्षण सीखें। पिछले अनुभव के बिना शुरुआती के लिए उपयुक्त।">
+                       Learn the basics of beekeeping, hive management, and honey extraction. Perfect for beginners with no prior experience.</p>
+                    <div class="training-fee" data-en="Fee: ₹2,000" data-hi="शुल्क: ₹2,000">Fee: ₹2,000</div>
+                    <button class="join-training" onclick="joinTraining('Beginner Bootcamp')">
+                        <span data-en="Join Training" data-hi="प्रशिक्षण में शामिल हों">Join Training</span>
+                    </button>
                 </div>
             </div>
 
             <div class="training-card">
                 <div class="training-header">
-                    <h3 class="training-name">Advanced Apiary Management</h3>
-                    <p class="training-duration">Duration: 7 days</p>
+                    <h3 class="training-name" data-en="Advanced Apiary Management" data-hi="उन्नत मधुमक्खी पालन प्रबंधन">Advanced Apiary Management</h3>
+                    <p class="training-duration" data-en="Duration: 7 days" data-hi="अवधि: 7 दिन">Duration: 7 days</p>
                 </div>
                 <div class="training-body">
-                    <p>Comprehensive training on colony expansion, disease management, queen rearing, and commercial honey production.</p>
-                    <div class="training-fee">Fee: ₹5,000</div>
-                    <button class="join-training" onclick="joinTraining('Advanced Apiary Management')">Join Training</button>
+                    <p data-en="Comprehensive training on colony expansion, disease management, queen rearing, and commercial honey production." 
+                       data-hi="उपनिवेश विस्तार, रोग प्रबंधन, क्वीन रियरिंग, और व्यावसायिक शहद उत्पादन पर व्यापक प्रशिक्षण।">
+                       Comprehensive training on colony expansion, disease management, queen rearing, and commercial honey production.</p>
+                    <div class="training-fee" data-en="Fee: ₹5,000" data-hi="शुल्क: ₹5,000">Fee: ₹5,000</div>
+                    <button class="join-training" onclick="joinTraining('Advanced Apiary Management')">
+                        <span data-en="Join Training" data-hi="प्रशिक्षण में शामिल हों">Join Training</span>
+                    </button>
                 </div>
             </div>
 
             <div class="training-card">
                 <div class="training-header">
-                    <h3 class="training-name">Free Goverment Workshop</h3>
-                    <p class="training-duration">Duration: Any month/year</p>
+                    <h3 class="training-name" data-en="Free Goverment Workshop" data-hi="मुफ्त सरकारी कार्यशाला">Free Goverment Workshop</h3>
+                    <p class="training-duration" data-en="Duration: Any month/year" data-hi="अवधि: कोई भी महीना/वर्ष">Duration: Any month/year</p>
                 </div>
                 <div class="training-body">
-                    <p>Learns Full process of beekeeping from Basics to Advance
-                        and get 1 bee box free.
-                    </p>
-                    <div class="training-fee">Fee: Free</div>
-                    <button class="join-training" onclick="joinTraining('Processing & Branding')">Join Training</button>
+                    <p data-en="Learns Full process of beekeeping from Basics to Advance and get 1 bee box free." 
+                       data-hi="बेसिक से एडवांस तक मधुमक्खी पालन की पूरी प्रक्रिया सीखें और 1 मधुमक्खी बॉक्स मुफ्त पाएं।">
+                       Learns Full process of beekeeping from Basics to Advance and get 1 bee box free.</p>
+                    <div class="training-fee" data-en="Fee: Free" data-hi="शुल्क: मुफ्त">Fee: Free</div>
+                    <button class="join-training" onclick="joinTraining('Processing & Branding')">
+                        <span data-en="Join Training" data-hi="प्रशिक्षण में शामिल हों">Join Training</span>
+                    </button>
                 </div>
             </div>
         </div>
         
         <!-- Training Gallery -->
         <div class="training-gallery">
-            <h3 class="section-title" style="font-size: 2rem;">Training Gallery</h3>
+            <h3 class="section-title" style="font-size: 2rem;" data-en="Training Gallery" data-hi="प्रशिक्षण गैलरी">Training Gallery</h3>
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="img/training gallary/T1.jpg" alt="Training Session 1">
                     <div class="gallery-overlay">
-                        <h4>Hands-on Hive Inspection</h4>
+                        <h4 data-en="Hands-on Hive Inspection" data-hi="हाथों से छत्ते की जांच">Hands-on Hive Inspection</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
                     <img src="img/training gallary/T2.jpg" alt="Training Session 2">
                     <div class="gallery-overlay">
-                        <h4>Honey Extraction Workshop</h4>
+                        <h4 data-en="Honey Extraction Workshop" data-hi="शहद निष्कर्षण कार्यशाला">Honey Extraction Workshop</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
                     <img src="img/training gallary/T3.jpg" alt="Training Session 3">
                     <div class="gallery-overlay">
-                        <h4>Queen Rearing Techniques</h4>
+                        <h4 data-en="Queen Rearing Techniques" data-hi="क्वीन रियरिंग तकनीक">Queen Rearing Techniques</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
                     <img src="img/training gallary/T4.jpg" alt="Training Session 4">
                     <div class="gallery-overlay">
-                        <h4>Bee Disease Management</h4>
+                        <h4 data-en="Bee Disease Management" data-hi="मधुमक्खी रोग प्रबंधन">Bee Disease Management</h4>
                     </div>
                 </div>
                 <div class="gallery-item">
                     <img src="img/training gallary/T5.jpg" alt="Training Session 5">
                     <div class="gallery-overlay">
-                        <h4>Equipment Setup</h4>
+                        <h4 data-en="Equipment Setup" data-hi="उपकरण सेटअप">Equipment Setup</h4>
                     </div>
                 </div>
 
                 <div class="gallery-item">
                     <img src="img/training gallary/T7.jpg" alt="Training Session 5">
                     <div class="gallery-overlay">
-                        <h4>Field Visit</h4>
+                        <h4 data-en="Field Visit" data-hi="फील्ड विजिट">Field Visit</h4>
                     </div>
                 </div>
 
                   <div class="gallery-item">
                     <img src="img/training gallary/T8.jpg" alt="Training Session 5">
                     <div class="gallery-overlay">
-                        <h4>Field Visit</h4>
+                        <h4 data-en="Field Visit" data-hi="फील्ड विजिट">Field Visit</h4>
                     </div>
                 </div>  
                     
@@ -1538,61 +1599,65 @@
                 <div class="gallery-item">
                     <img src="img/training gallary/T6.jpg" alt="Training Session 6">
                     <div class="gallery-overlay">
-                        <h4>Field Visit</h4>
+                        <h4 data-en="Field Visit" data-hi="फील्ड विजिट">Field Visit</h4>
                     </div>
                 </div>
             </div>
         </div>
         
-        <p class="training-note">We also provide custom training programs for institutions, cooperatives, and colleges.</p>
+        <p class="training-note" data-en="We also provide custom training programs for institutions, cooperatives, and colleges." 
+           data-hi="हम संस्थानों, सहकारी समितियों और कॉलेजों के लिए अनुकूलित प्रशिक्षण कार्यक्रम भी प्रदान करते हैं।">
+           We also provide custom training programs for institutions, cooperatives, and colleges.</p>
     </section>
 
     <!-- Photo Gallery Section -->
     <section class="photo-gallery section" id="gallery">
-        <h2 class="gallery-title">Photo Gallery</h2>
-        <p class="gallery-description">Explore our apiary, training sessions, and beekeeping activities</p>
+        <h2 class="gallery-title" data-en="Photo Gallery" data-hi="फोटो गैलरी">Photo Gallery</h2>
+        <p class="gallery-description" data-en="Explore our apiary, training sessions, and beekeeping activities" 
+           data-hi="हमारे मधुमक्खी पालन, प्रशिक्षण सत्र और मधुमक्खी पालन गतिविधियों का अन्वेषण करें">
+           Explore our apiary, training sessions, and beekeeping activities</p>
         
         <div class="gallery-large-grid">
             <div class="gallery-large-item">
                 <img src="img/photo gallary/tragona box.jpg" alt="Apiary Landscape">
                 <div class="gallery-large-overlay">
-                    <h3>Our Apiary</h3>
-                    <p>Beautiful apiary setup in Warora, Maharashtra</p>
+                    <h3 data-en="Our Apiary" data-hi="हमारा मधुमक्खी पालन">Our Apiary</h3>
+                    <p data-en="Beautiful apiary setup in Warora, Maharashtra" data-hi="वरोरा, महाराष्ट्र में सुंदर मधुमक्खी पालन सेटअप">Beautiful apiary setup in Warora, Maharashtra</p>
                 </div>
             </div>
             <div class="gallery-large-item">
                 <img src="img/photo gallary/hy sell.jpg" alt="Beekeeping Training">
                 <div class="gallery-large-overlay">
-                    <h3>Training Sessions</h3>
-                    <p>Hands-on beekeeping training for enthusiasts</p>
+                    <h3 data-en="Training Sessions" data-hi="प्रशिक्षण सत्र">Training Sessions</h3>
+                    <p data-en="Hands-on beekeeping training for enthusiasts" data-hi="उत्साही लोगों के लिए हाथों से मधुमक्खी पालन प्रशिक्षण">Hands-on beekeeping training for enthusiasts</p>
                 </div>
             </div>
             <div class="gallery-large-item">
                 <img src="img/photo gallary/honey.jpg" alt="Honey Extraction">
                 <div class="gallery-large-overlay">
-                    <h3>Honey Processing</h3>
-                    <p>State-of-the-art honey extraction facility</p>
+                    <h3 data-en="Honey Processing" data-hi="शहद प्रसंस्करण">Honey Processing</h3>
+                    <p data-en="State-of-the-art honey extraction facility" data-hi="अत्याधुनिक शहद निष्कर्षण सुविधा">State-of-the-art honey extraction facility</p>
                 </div>
             </div>
             <div class="gallery-large-item">
                 <img src="img/photo gallary/frame.jpg" alt="Bee Colonies">
                 <div class="gallery-large-overlay">
-                    <h3>Healthy Colonies</h3>
-                    <p>Well-maintained bee colonies for optimal honey production</p>
+                    <h3 data-en="Healthy Colonies" data-hi="स्वस्थ उपनिवेश">Healthy Colonies</h3>
+                    <p data-en="Well-maintained bee colonies for optimal honey production" data-hi="इष्टतम शहद उत्पादन के लिए अच्छी तरह से रखरखाव किए गए मधुमक्खी उपनिवेश">Well-maintained bee colonies for optimal honey production</p>
                 </div>
             </div>
             <div class="gallery-large-item">
                 <img src="img/photo gallary/be vail.jpg" alt="Bee Products">
                 <div class="gallery-large-overlay">
-                    <h3>Premium Products</h3>
-                    <p>Our range of pure honey and bee products</p>
+                    <h3 data-en="Premium Products" data-hi="प्रीमियम उत्पाद">Premium Products</h3>
+                    <p data-en="Our range of pure honey and bee products" data-hi="हमारी शुद्ध शहद और मधुमक्खी उत्पादों की श्रृंखला">Our range of pure honey and bee products</p>
                 </div>
             </div>
             <div class="gallery-large-item">
                 <img src="img/photo gallary/extror.jpg" alt="Community Engagement">
                 <div class="gallery-large-overlay">
-                    <h3>Community Work</h3>
-                    <p>Engaging with local farmers and communities</p>
+                    <h3 data-en="Community Work" data-hi="सामुदायिक कार्य">Community Work</h3>
+                    <p data-en="Engaging with local farmers and communities" data-hi="स्थानीय किसानों और समुदायों के साथ जुड़ना">Engaging with local farmers and communities</p>
                 </div>
             </div>
         </div>
@@ -1600,8 +1665,11 @@
 
     <!-- Achievements Section -->
     <section class="achievements section" id="achievements">
-        <h2 class="section-title">Our Achievements</h2>
-        <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px;">Recognitions and awards in the field of apiculture</p>
+        <h2 class="section-title" data-en="Our Achievements" data-hi="हमारी उपलब्धियां">Our Achievements</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px;" 
+           data-en="Recognitions and awards in the field of apiculture" 
+           data-hi="मधुमक्खी पालन के क्षेत्र में मान्यता और पुरस्कार">
+           Recognitions and awards in the field of apiculture</p>
         
         <div class="achievements-grid">
             <div class="achievement-card">
@@ -1609,9 +1677,10 @@
                     <img src="img/pu1.png" alt="Best Organic Honey Producer Award">
                 </div>
                 <div class="achievement-info">
-                    <h3 class="achievement-title">Bee The Change Maker</h3>
+                    <h3 class="achievement-title" data-en="Bee The Change Maker" data-hi="बी द चेंज मेकर">Bee The Change Maker</h3>
                     <p class="achievement-date">2023</p>
-                    <p class="achievement-description">Awarded by the National Beekeeping Board.</p>
+                    <p class="achievement-description" data-en="Awarded by the National Beekeeping Board." 
+                       data-hi="राष्ट्रीय मधुमक्खी पालन बोर्ड द्वारा पुरस्कार प्राप्त।">Awarded by the National Beekeeping Board.</p>
                 </div>
             </div>
 
@@ -1620,9 +1689,10 @@
                     <img src="img/pu2.jpg" alt="Quality Certification">
                 </div>
                 <div class="achievement-info">
-                    <h3 class="achievement-title">Best BeeKeeper IN Region.</h3>
+                    <h3 class="achievement-title" data-en="Best BeeKeeper IN Region." data-hi="क्षेत्र में सर्वश्रेष्ठ मधुमक्खी पालक।">Best BeeKeeper IN Region.</h3>
                     <p class="achievement-date">2023</p>
-                    <p class="achievement-description">Received ISO 9001:2023 certification for quality management in bee products.</p>
+                    <p class="achievement-description" data-en="Received ISO 9001:2023 certification for quality management in bee products." 
+                       data-hi="मधुमक्खी उत्पादों में गुणवत्ता प्रबंधन के लिए ISO 9001:2023 प्रमाणपत्र प्राप्त।">Received ISO 9001:2023 certification for quality management in bee products.</p>
                 </div>
             </div>
 
@@ -1631,9 +1701,10 @@
                     <img src="img/puu3.jpg" alt="Community Impact Award">
                 </div>
                 <div class="achievement-info">
-                    <h3 class="achievement-title">Best BeeKeeper in District</h3>
+                    <h3 class="achievement-title" data-en="Best BeeKeeper in District" data-hi="जिले में सर्वश्रेष्ठ मधुमक्खी पालक">Best BeeKeeper in District</h3>
                     <p class="achievement-date">2021</p>
-                    <p class="achievement-description">Recognized for empowering local communities through sustainable beekeeping initiatives.</p>
+                    <p class="achievement-description" data-en="Recognized for empowering local communities through sustainable beekeeping initiatives." 
+                       data-hi="सतत मधुमक्खी पालन पहल के माध्यम से स्थानीय समुदायों को सशक्त बनाने के लिए मान्यता प्राप्त।">Recognized for empowering local communities through sustainable beekeeping initiatives.</p>
                 </div>
             </div>
 
@@ -1652,8 +1723,11 @@
 
     <!-- Contact Section -->
     <section class="contact section" id="contact">
-        <h2 class="section-title">Contact Us</h2>
-        <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px;">Questions, bulk orders, training inquiries — we are here to help.</p>
+        <h2 class="section-title" data-en="Contact Us" data-hi="संपर्क करें">Contact Us</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: var(--text-gray); margin-bottom: 40px;" 
+           data-en="Questions, bulk orders, training inquiries — we are here to help." 
+           data-hi="प्रश्न, थोक ऑर्डर, प्रशिक्षण पूछताछ — हम आपकी सहायता के लिए यहां हैं।">
+           Questions, bulk orders, training inquiries — we are here to help.</p>
         
         <div class="contact-container">
             <!-- Owner Section -->
@@ -1663,9 +1737,30 @@
                 </div>
                 <div class="owner-info">
                     <h3>Ravindra jogi</h3>
-                    <p><strong>Founder & propraitor</strong></p>
-                    <p>With over 21 years of experience in apiculture, Ravindra founded Dhanlaxmi madhumakhi palan to promote sustainable beekeeping practices and educate the community about the importance of bees in our ecosystem.</p>
-                    <p>Under his leadership, our apiary has grown from a small setup to a renowned center for beekeeping excellence in Maharashtra.</p>
+                    <p><strong data-en="Founder & propraitor" data-hi="संस्थापक और स्वामी">Founder & propraitor</strong></p>
+                    <p data-en="With over 21 years of experience in apiculture, Ravindra founded Dhanlaxmi madhumakhi palan to promote sustainable beekeeping practices and educate the community about the importance of bees in our ecosystem." 
+                       data-hi="मधुमक्खी पालन में 21 से अधिक वर्षों के अनुभव के साथ, रविंद्र ने धनलक्ष्मी मधुमक्खी पालन की स्थापना सतत मधुमक्खी पालन प्रथाओं को बढ़ावा देने और हमारे पारिस्थिकी तंत्र में मधुमक्खियों के महत्व के बारे में समुदाय को शिक्षित करने के लिए की।">
+                       With over 21 years of experience in apiculture, Ravindra founded Dhanlaxmi madhumakhi palan to promote sustainable beekeeping practices and educate the community about the importance of bees in our ecosystem.</p>
+                    <p data-en="Under his leadership, our apiary has grown from a small setup to a renowned center for beekeeping excellence in Maharashtra." 
+                       data-hi="उनके नेतृत्व में, हमारा मधुमक्खी पालन एक छोटे सेटअप से महाराष्ट्र में मधुमक्खी पालन उत्कृष्टता के लिए एक प्रसिद्ध केंद्र बन गया है।">
+                       Under his leadership, our apiary has grown from a small setup to a renowned center for beekeeping excellence in Maharashtra.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="owner-section">
+                <div class="owner-image">
+                    <img src="img/aadar passport new.jpeg" alt="ravindra jogi - Owner">
+                </div>
+                <div class="owner-info">
+                    <h3>Aadar jogi</h3>
+                    <p><strong>CEO & Manager</strong></p>
+                    <p></p>
+                    <p></p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1678,16 +1773,18 @@
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <div>
-                        <strong>Address:</strong><br>
-                        Dhanlaxmi madhumakhi palan, Warora,chandrapur, Maharashtra, India<br>
-                    <a href="https://share.google/pQDWoFn9iqv0uVIAT">Map Link</a>    
+                        <strong data-en="Address:" data-hi="पता:">Address:</strong><br>
+                        <span data-en="Dhanlaxmi madhumakhi palan, Warora,chandrapur, Maharashtra, India" 
+                              data-hi="धनलक्ष्मी मधुमक्खी पालन, वरोरा, चंद्रपुर, महाराष्ट्र, भारत">
+                              Dhanlaxmi madhumakhi palan, Warora,chandrapur, Maharashtra, India</span><br>
+                    <a href="https://share.google/pQDWoFn9iqv0uVIAT"><span data-en="Map Link" data-hi="मानचित्र लिंक">Map Link</span></a>    
                                 </div>
                 </div>
                 
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
                     <div>
-                        <strong>Phone:</strong><br>
+                        <strong data-en="Phone:" data-hi="फोन:">Phone:</strong><br>
                         +91 9822451179
                         +91 7350824369
                     </div>
@@ -1696,7 +1793,7 @@
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
                     <div>
-                        <strong>Email:</strong><br>
+                        <strong data-en="Email:" data-hi="ईमेल:">Email:</strong><br>
                         aadarjogi07@gmail.com
                     </div>
                 </div>
@@ -1704,53 +1801,61 @@
             
             <form class="contact-form" id="contactForm">
                 <div class="form-group">
-                    <label for="name">Full Name</label>
+                    <label for="name" data-en="Full Name" data-hi="पूरा नाम">Full Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" data-en="Email" data-hi="ईमेल">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
+                    <label for="message" data-en="Message" data-hi="संदेश">Message</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="submit" class="submit-btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> <span data-en="Send via WhatsApp" data-hi="व्हाट्सएप के माध्यम से भेजें">Send via WhatsApp</span>
+                </button>
             </form>
         </div>
     </section>
 
     <!-- FAQ Section -->
     <section class="faq section" id="faq">
-        <h2 class="section-title">Frequently Asked Questions</h2>
+        <h2 class="section-title" data-en="Frequently Asked Questions" data-hi="अक्सर पूछे जाने वाले प्रश्न">Frequently Asked Questions</h2>
         <div class="faq-container">
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>How much land do I need to start?</span>
+                    <span data-en="How much land do I need to start?" data-hi="शुरू करने के लिए मुझे कितनी जमीन चाहिए?">How much land do I need to start?</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>You can start with a small backyard. Commercial operations typically begin with 20+ hives on leased or owned land.</p>
+                    <p data-en="You can start with a small backyard. Commercial operations typically begin with 20+ hives on leased or owned land." 
+                       data-hi="आप एक छोटे बैकयार्ड से शुरू कर सकते हैं। व्यावसायिक संचालन आमतौर पर किराए पर ली गई या स्वामित्व वाली भूमि पर 20+ छत्तों के साथ शुरू होता है।">
+                       You can start with a small backyard. Commercial operations typically begin with 20+ hives on leased or owned land.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Are bees dangerous?</span>
+                    <span data-en="Are bees dangerous?" data-hi="क्या मधुमक्खियां खतरनाक हैं?">Are bees dangerous?</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Worker bees rarely sting unless provoked. With proper protective gear and gentle handling, the risk is very low.</p>
+                    <p data-en="Worker bees rarely sting unless provoked. With proper protective gear and gentle handling, the risk is very low." 
+                       data-hi="कामकाजी मधुमक्खियां बहुत कम डंक मारती हैं जब तक कि उन्हें उकसाया न जाए। उचित सुरक्षात्मक गियर और नरम तरीके से संभालने के साथ, जोखिम बहुत कम है।">
+                       Worker bees rarely sting unless provoked. With proper protective gear and gentle handling, the risk is very low.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>How soon will I get returns?</span>
+                    <span data-en="How soon will I get returns?" data-hi="मुझे कितनी जल्दी रिटर्न मिलेगा?">How soon will I get returns?</span>
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>With Apis mellifera, expect the first meaningful honey harvest in 3–6 months depending on season and nectar flow.</p>
+                    <p data-en="With Apis mellifera, expect the first meaningful honey harvest in 3–6 months depending on season and nectar flow." 
+                       data-hi="एपिस मेलिफेरा के साथ, मौसम और नेक्टर प्रवाह के आधार पर 3-6 महीनों में पहला सार्थक शहद की कटाई की उम्मीद करें।">
+                       With Apis mellifera, expect the first meaningful honey harvest in 3–6 months depending on season and nectar flow.</p>
                 </div>
             </div>
         </div>
@@ -1764,13 +1869,40 @@
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
-        <p>&copy; 2025 All rights are reserve MADE BY AADAR JOGI 🐝.</p>
+        <p data-en="&copy; 2025 All rights are reserve MADE BY AADAR JOGI 🐝." 
+           data-hi="&copy; 2025 सभी अधिकार सुरक्षित हैं AADAR JOGI द्वारा बनाया गया 🐝।">
+           &copy; 2025 All rights are reserve MADE BY AADAR JOGI 🐝.</p>
     </footer>
 
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
     <script>
+        // Language Switching Functionality
+        let currentLanguage = 'en';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update button states
+            document.getElementById('enBtn').classList.toggle('active', lang === 'en');
+            document.getElementById('hiBtn').classList.toggle('active', lang === 'hi');
+            
+            // Update all elements with data-en and data-hi attributes
+            document.querySelectorAll('[data-en]').forEach(element => {
+                element.textContent = element.getAttribute(`data-${lang}`);
+            });
+            
+            // Store language preference in localStorage
+            localStorage.setItem('language', lang);
+        }
+        
+        // Check for saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('language') || 'en';
+            switchLanguage(savedLanguage);
+        });
+
         // Loading Screen
         window.addEventListener('load', () => {
             setTimeout(() => {
@@ -1828,9 +1960,13 @@
             });
         });
 
-        // Buy Now Function
+        // WhatsApp Number
+        const whatsappNumber = "919822451179"; // Your WhatsApp number in international format
+
+        // Buy Now Function - Redirect to WhatsApp
         function buyNow(productName) {
-            showToast(`${productName} added to cart!`);
+            const message = encodeURIComponent(`Hi, I'm interested in buying ${productName}. Please provide more information.`);
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
             
             // Add animation to the button
             event.target.style.transform = 'scale(0.95)';
@@ -1839,9 +1975,10 @@
             }, 200);
         }
 
-        // Join Training Function
+        // Join Training Function - Redirect to WhatsApp
         function joinTraining(courseName) {
-            showToast(`You've registered for ${courseName}! We'll contact you soon.`);
+            const message = encodeURIComponent(`Hi, I'm interested in joining the ${courseName} training. Please provide more details.`);
+            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
             
             // Add animation to the button
             event.target.style.transform = 'scale(0.95)';
@@ -1850,18 +1987,7 @@
             }, 200);
         }
 
-        // Toast Notification
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-
-        // Contact Form
+        // Contact Form - Redirect to WhatsApp
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -1869,8 +1995,11 @@
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
             
-            // Simulate form submission
-            showToast(`Thank you ${name}! We'll get back to you soon.`);
+            // Create WhatsApp message
+            const whatsappMessage = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage: ${message}`);
+            
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
             
             // Reset form
             document.getElementById('contactForm').reset();
